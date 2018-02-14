@@ -1,23 +1,11 @@
 
-// Draw the bottle on buffer canvas
-// haul it in and dras it with the function below
-// Each image should get a specific angle depedning on the position on the circle it is.
-
 // Bottle d element and original aspect ratio (w/h).
 var dPath = 'M5.43.1c-.12.1-.19.33-.21.74a1.25,1.25,0,0,1-.1.46,3.71,3.71,0,0,0-.1.94C5,3,5,3.12,5.1,3.3a2.35,2.35,0,0,1,.07.78L4.76,15.25a2,2,0,0,1-.28,1.16,12.92,12.92,0,0,1-1,1.26A13.22,13.22,0,0,0,0,26.1V57.46c.1.81.52,2.08,1.17,2.35H14.79c.65-.27,1.07-1.54,1.17-2.35V26.1a13.22,13.22,0,0,0-3.47-8.43,8.34,8.34,0,0,1-1.08-1.39,1.73,1.73,0,0,1-.21-.94L10.8,4.08a1.94,1.94,0,0,1,.08-.78A2.42,2.42,0,0,0,11,2.24a3.71,3.71,0,0,0-.1-.94,1.11,1.11,0,0,1-.09-.46c0-.41-.1-.64-.22-.74A32.29,32.29,0,0,0,5.43.1ZM9.7,3.72H10V14.37H9.7Zm3.31,23V57.51h-.35V26.68Zm1.24,0V57.51h-.77V26.68Z'
 var ar = 16/60;
 
 // Set the Canvas up.
-// var width = 750,
-// 		height = 500;
 var width = d3.select('#container').node().offsetWidth,
 		height = d3.select('#container').node().offsetHeight;
-
-// debugger
-
-// TODO Set the control element's width or set the vertically.
-// Style the bottles and background.
-
 
 var canvas = d3.select('#container').append('canvas')
 		.attr('width', width)
@@ -27,6 +15,7 @@ var context = canvas.node().getContext('2d');
 
 
 // Functions
+// ---------
 
 var utils = {
 
