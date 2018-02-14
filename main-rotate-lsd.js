@@ -237,7 +237,8 @@ bottler.init();
 
 // Set the speed.
 var speed = 0.01;
-d3.select('input[name=speed-crank').attr('value', speed);
+// d3.select('input[name="speed-crank"').attr('value', speed);
+d3.select('input#speed-slider').attr('value', speed);
 d3.select('#current-speed').html('speed: ' + Math.round	(speed *1000)/1000)
 
 
