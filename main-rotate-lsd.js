@@ -246,7 +246,6 @@ function update(degreeChange) {
 // Create a bottle.
 bottler.init();
 
-debugger
 // Set the speed.
 var speed = 0.01;
 d3.select('input[name=speed-crank').attr('value', speed);
