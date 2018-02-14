@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>main</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+ 	<script src="//d3js.org/d3.v5.js"></script>
+ 	<style type="text/css">
+	
+		html {
+			margin: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			margin: 0;
+			font-family: Avenir, Nunito, Helvetica, sans-serif;
+			font-size: 12px;
+			font: #003300;
+			background: #993388;
+			display: flex;
+		}
+	
+		#container {
+			width: 85vw;
+			height: 100vh;
+		}
+
+		#controls {
+			width: 15vw;
+			height: 100vh;
+			display: flex;
+			flex-direction: column;
+		}
+		
+
+		.control-wrap {
+			display: flex;
+			flex-direction: column;
+			margin: 0.5rem 1rem;
+		}
+
+		.button {
+			display: flex;
+		}
+
+	.button label {
+		margin: 0 0.5rem;
+	}
+
+		div {
+			border: 0px dotted #ccc;
+		}
+		
+
+
+ 	</style>
+</head>
+<body>
+
+	<div id="container"></div>
+	<div id="controls">
+		<div class="control-wrap" id="slider-wrap">		
+			<h3>To be played with</h3>
+			<input type="range" name="speed-crank" min="0.001" max="0.1" step="any">
+			<div id="current-speed"></div>
+		</div>
+		<div class="control-wrap" id="shape-wrap">
+			<div class="button">
+				<input type="radio" id="clock" name="shapes" value="clockwise" checked>
+		  	<label for="clock">clockwise</label></div>
+			<div class="button">
+				<input type="radio" id="counter-clock" name="shapes" value="counter-clock">
+		  	<label for="counter-clock">counter-clockwise</label></div>
+			<div class="button">
+				<input type="radio" id="center-vs-linear" name="shapes" value="center-vs-linear">
+		  	<label for="center-vs-linear">counter center</label></div>
+			<div class="button">
+				<input type="radio" id="opposite-linear" name="shapes" value="opposite-linear">
+		  	<label for="opposite-linear">opposite linear</label></div>
+			<div class="button">
+				<input type="radio" id="center-vs-boring-rest" name="shapes" value="center-vs-boring-rest">
+		  	<label for="center-vs-boring-rest">gyro center</label></div>
+			<div class="button">
+				<input type="radio" id="center-vs-rest" name="shapes" value="center-vs-rest">
+		  	<label for="center-vs-rest">center vs rest</label></div>
+			<div class="button">
+				<input type="radio" id="cross-3d" name="shapes" value="cross-3d">
+		  	<label for="cross-3d">3D cross</label></div>
+			<div class="button">
+				<input type="radio" id="seasick-steve" name="shapes" value="seasick-steve">
+		  	<label for="seasick-steve">seasick steve</label></div>
+			<div class="button">
+				<input type="radio" id="subtle-synaptic-implosion" name="shapes" value="subtle-synaptic-implosion">
+		  	<label for="subtle-synaptic-implosion">subtle synaptic implosion</label></div>
+			<div class="button">
+				<input type="radio" id="sine-accelerate" name="shapes" value="sine-accelerate">
+		  	<label for="sine-accelerate">sine speed</label></div>
+		</div>
+	</div>
+
+
+	<!-- <script src="main.js"></script> -->
+	<!-- <script src="main-rotate.js"></script> -->
+	<script src="main-rotate-lsd.js"></script>
+
+</body>
+</html>
