@@ -1,6 +1,7 @@
 
 // Bottle d element and original aspect ratio (w/h).
-var dPath = 'M5.43.1c-.12.1-.19.33-.21.74a1.25,1.25,0,0,1-.1.46,3.71,3.71,0,0,0-.1.94C5,3,5,3.12,5.1,3.3a2.35,2.35,0,0,1,.07.78L4.76,15.25a2,2,0,0,1-.28,1.16,12.92,12.92,0,0,1-1,1.26A13.22,13.22,0,0,0,0,26.1V57.46c.1.81.52,2.08,1.17,2.35H14.79c.65-.27,1.07-1.54,1.17-2.35V26.1a13.22,13.22,0,0,0-3.47-8.43,8.34,8.34,0,0,1-1.08-1.39,1.73,1.73,0,0,1-.21-.94L10.8,4.08a1.94,1.94,0,0,1,.08-.78A2.42,2.42,0,0,0,11,2.24a3.71,3.71,0,0,0-.1-.94,1.11,1.11,0,0,1-.09-.46c0-.41-.1-.64-.22-.74A32.29,32.29,0,0,0,5.43.1ZM9.7,3.72H10V14.37H9.7Zm3.31,23V57.51h-.35V26.68Zm1.24,0V57.51h-.77V26.68Z'
+// var dPath = 'M5.43.1c-.12.1-.19.33-.21.74a1.25,1.25,0,0,1-.1.46,3.71,3.71,0,0,0-.1.94C5,3,5,3.12,5.1,3.3a2.35,2.35,0,0,1,.07.78L4.76,15.25a2,2,0,0,1-.28,1.16,12.92,12.92,0,0,1-1,1.26A13.22,13.22,0,0,0,0,26.1V57.46c.1.81.52,2.08,1.17,2.35H14.79c.65-.27,1.07-1.54,1.17-2.35V26.1a13.22,13.22,0,0,0-3.47-8.43,8.34,8.34,0,0,1-1.08-1.39,1.73,1.73,0,0,1-.21-.94L10.8,4.08a1.94,1.94,0,0,1,.08-.78A2.42,2.42,0,0,0,11,2.24a3.71,3.71,0,0,0-.1-.94,1.11,1.11,0,0,1-.09-.46c0-.41-.1-.64-.22-.74A32.29,32.29,0,0,0,5.43.1ZM9.7,3.72H10V14.37H9.7Zm3.31,23V57.51h-.35V26.68Zm1.24,0V57.51h-.77V26.68Z'
+var dPath = 'M12.22,18.72a16.75,16.75,0,0,1-1.35-6L10.46.81C10.46.37,10.14,0,8,0S5.54.37,5.54.81l-.4,11.86a16.75,16.75,0,0,1-1.35,6L2.15,22.53A26.45,26.45,0,0,0,0,32.9V56.38C0,57.77,1.1,59,8,59s8-1.23,8-2.63V32.9a26.27,26.27,0,0,0-2.14-10.37Z'
 var ar = 16/60;
 
 // Set the Canvas up.
@@ -64,9 +65,9 @@ var bottler = {
 
 	orbits: {},
 
-	bottlesPerOrbit: 40,
+	bottlesPerOrbit: 30,
 
-	shapes: 'clockwise',
+	shapes: 'subtle-synaptic-implosion',
 
 	factorScale: undefined,
 
@@ -89,7 +90,8 @@ var bottler = {
 	  var contextbottleImg = bottleImg.getContext('2d');
 
 	  contextbottleImg.beginPath();
-	  contextbottleImg.fillStyle = '#722665';
+    // contextbottleImg.fillStyle = '#722665';
+	  contextbottleImg.fillStyle = 'lightsteelblue';
 	  var p = new Path2D(dPath)
 	  contextbottleImg.fill(p);
 
@@ -191,13 +193,18 @@ var bottler = {
 
 				}
 
+				// TODO - continue here
+				var radiusFactor = change < 1 ? change : 1;
+				// context.globalAlpha = radiusFactor;
 
 				// calculate the cartesian coordinates,
+        // var x = this.orbits[j].cx + Math.cos(thetaX) * this.orbits[j].r * radiusFactor,
+        //    y = this.orbits[j].cy + Math.sin(thetaY) * this.orbits[j].r * radiusFactor;
 				var x = this.orbits[j].cx + Math.cos(thetaX) * this.orbits[j].r,
 						y = this.orbits[j].cy + Math.sin(thetaY) * this.orbits[j].r;
 
 				// draw the bottle on that orbit.
-				utils.drawImageRotate(context, this.bottle, x, y, 7, 6/ar, utils.radianToDegree(thetaBottle)+45);
+				utils.drawImageRotate(context, this.bottle, x, y, 6, 6/ar, utils.radianToDegree(thetaBottle)+45);
 
 			}
 
@@ -216,7 +223,15 @@ function update(degreeChange) {
 	context.save();
 	context.translate(0, -10); 
 
-	context.fillStyle = '#993388';
+  // Single hue background.
+	// context.fillStyle = '#993388';
+
+  // Radial graident background.
+  var grd = context.createRadialGradient(width/2, height/2, width/2 * 0.5, width/2, height/2, width/2);
+  grd.addColorStop(0, '#0c2050');
+  grd.addColorStop(1, '#09173A');
+  context.fillStyle = grd;
+
 	context.fillRect(0, 0, width, height)
 
 	// Draw.
